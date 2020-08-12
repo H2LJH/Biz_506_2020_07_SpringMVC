@@ -1,5 +1,8 @@
 *.class
 
+#Servers
+Servers
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
