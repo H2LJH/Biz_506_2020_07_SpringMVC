@@ -23,11 +23,11 @@
 		<article id="blog_body">
 			<c:forEach items="${BLOGS}" var="BLOG">
 				<section class="blog_title">
-					<h4>${BLOG.title} - <span>${BLOG.user}</span></h4>
+					<h4>${BLOG.bl_title} - <span>${BLOG.bl_user}</span></h4>
 				</section>
 	
 				<section class="blog_text">
-					<h5>${BLOG.content}</h5>
+					<h5>${BLOG.bl_contents}</h5>
 				</section>
 			</c:forEach>
 		</article>

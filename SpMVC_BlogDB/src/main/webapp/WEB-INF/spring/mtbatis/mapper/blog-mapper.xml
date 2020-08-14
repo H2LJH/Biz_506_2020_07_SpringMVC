@@ -5,10 +5,19 @@
   
  <mapper namespace="com.biz.blog.dao.BlogDAO">
  
- 	<select id="selectAll"></select>
- 	<select id="findById"></select>
+ 	<select id="selectAll" resultType="BlogVO">
+ 		SELECT * FROM tbl_blogs
+ 		ORDER BY bl_date DESC, bl_time DESC
+ 	</select>
+ 	
+ 	<select id="findBySeq"></select>
+ 	
+ 	<select id="findByTitle"></select>
+ 	
  	<insert id="insert"></insert>
+ 	
  	<update id="update"></update>
+ 	
  	<delete id="delete"></delete>
- 
+
  </mapper> 
