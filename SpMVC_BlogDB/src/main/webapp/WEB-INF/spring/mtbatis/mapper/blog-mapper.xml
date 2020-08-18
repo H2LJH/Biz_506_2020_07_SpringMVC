@@ -10,14 +10,44 @@
  		ORDER BY bl_date DESC, bl_time DESC
  	</select>
  	
- 	<select id="findBySeq"></select>
+ 	
+ 	<select id="findById"></select>
+ 	
+ 	<select id="findBySeq" resultType="BlogVO">
+ 		SELECT * FROM tbl_blogs WHERE bl_seq = #{seq}
+ 	</select>
  	
  	<select id="findByTitle"></select>
  	
- 	<insert id="insert"></insert>
+ 	<insert id="insert" parameterType="BlogVO">
+ 		INSERT INTO tbl_blogs(
+			BL_SEQ,
+			BL_USER,
+			BL_DATE,
+			BL_TIME,
+			BL_TITLE,
+			BL_CONTENTS
+ 		) VALUES (
+ 			SEQ_BLOG.NEXTVAL,
+			#{bl_user},
+			#{bl_date},
+			#{bl_time},
+			#{bl_title},
+			#{bl_contents})
+	</insert>
+ 
+ 	<update id="update" parameterType="BlogVO">
+ 		UPDATE tbl_blogs SET
+			bl_user		= #{bl_user},
+			bl_date		= #{bl_date},
+			bl_time		= #{bl_time},
+			bl_title 	= #{bl_title},
+			bl_contents =	#{bl_contents}
+ 		WHERE bl_seq = #{bl_seq}
+ 	</update>
  	
- 	<update id="update"></update>
- 	
- 	<delete id="delete"></delete>
+ 	<delete id="delete">
+ 		DELETE FROM tbl_blogs WHERE bl_seq = #{seq}
+ 	</delete>
 
  </mapper> 

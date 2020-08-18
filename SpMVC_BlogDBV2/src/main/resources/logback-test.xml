@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="3 seconds">
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{32} - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+	<!-- 
+		level 순위 (순위가 높을수록 하위 level 무시함)
+		1 FATAL : log.fatal()
+		2 ERROR : log.error()
+		3 WARN  : log.warn()
+		4 INFO  : log.info()
+		5 DEBUG : log.debug()
+		6 TRACE : log.trace()
+	 -->
+
+
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.mybatis"><level value="INFO"/></logger>
+    <logger name="com.biz.blog"><level value="DEBUG"/></logger>
+        <root level="TRACE">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
