@@ -18,10 +18,8 @@ header
 	text-align: center;
 	padding: 1.5rem;
 }
-
-
-
 </style>
+
 <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/input.css?ver=2020-8-19"/>
 </head>
 <body>
@@ -29,7 +27,7 @@ header
 		<h3>빛나리 쇼핑몰 V1</h3>
 		<p>빛나리 쇼핑몰 2020 V1</p>
 	</header>
-	<%@ include file="/WEB-INF/views/include/include-nav.jspf"%>
+		<%@ include file="/WEB-INF/views/include/include-nav.jspf"%>
 	<section>
 		<c:choose>
 			<c:when test= "${BODY == 'PRO_WRITE'}">

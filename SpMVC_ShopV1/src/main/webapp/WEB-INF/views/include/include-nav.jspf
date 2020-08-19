@@ -2,9 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value='${pageContext.request.contextPath}' />
+
 <style>
-nav 
-{
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
 	width: 100%;
 	background-color: #00316b;
 }
@@ -22,20 +28,16 @@ ul li {
 	cursor: pointer;
 }
 
-
-ul li:nth-child(4){
-	margin-left:auto;
+ul li:nth-child(4) {
+	margin-left: auto;
 }
 
-
-ul li:hover 
-{
+ul li:hover {
 	background-color: white;
 	color: blue;
 }
 
-div.toggle 
-{
+div.toggle {
 	width: 100%;
 	padding: 10px 20px;
 	text-align: right;
@@ -44,8 +46,7 @@ div.toggle
 	display: none;
 }
 
-@media (max-width:768px) 
-{
+@media ( max-width :768px) {
 	div.toggle {
 		display: block;
 	}
@@ -60,7 +61,6 @@ div.toggle
 	}
 	ul li:hover {
 		background-color: gray;
-		
 	}
 	.active {
 		display: block;
@@ -69,38 +69,35 @@ div.toggle
 </style>
 
 <script>
-	$(function() 
-    { 
-		$(".menu").click(function() 
-		{
+	$(function() {
+		$(".menu").click(function() {
 			$("ul").toggle("active")
 		})
-		
-		$("nav ul li").click(function()
-		{
+
+		$("nav ul li").click(function() {
 			var text = $(this).text()
-			if(text == "상품관리")
+			if (text == "상품관리")
 				document.location.href = "${rootPath}/product/insert";
-					
-			else if(text == "거래처관리")
+
+			else if (text == "거래처관리")
 				document.location.href = "${rootPath}/dept/list";
-				
-				else if(text == "Home")
-					document.location.href = "${rootPath}/";
+
+			else if (text == "Home")
+				document.location.href = "${rootPath}/";
 		})
-		
+
 	})
 </script>
 
-	<nav>
-		<div class="toggle">
-			<i class="fas fa-bars menu"></i>
-		</div>
-		<ul>
-			<li>Home</li>
-			<li>상품관리</li>
-			<li>거래처관리</li>
-			<li>로그인</li>
-			<li>회원가입</li>
-		</ul>
-	</nav>
+<nav>
+	<div class="toggle">
+		<i class="fas fa-bars menu"></i>
+	</div>
+	<ul>
+		<li>Home</li>
+		<li>상품관리</li>
+		<li>거래처관리</li>
+		<li>로그인</li>
+		<li>회원가입</li>
+	</ul>
+</nav>
