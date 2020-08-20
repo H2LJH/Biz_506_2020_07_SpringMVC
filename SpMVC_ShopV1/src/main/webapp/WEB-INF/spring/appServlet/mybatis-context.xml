@@ -31,6 +31,6 @@
 	</bean>
 	
 	<!-- mybatis-scan -->
-	<mybatis-spring:scan base-package="com.biz.persistence"/>
+	<mybatis-spring:scan base-package="com.biz.shop.persistence"/>
 
 </beans>

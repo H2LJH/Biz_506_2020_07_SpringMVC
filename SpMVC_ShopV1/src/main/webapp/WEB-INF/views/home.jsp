@@ -30,8 +30,12 @@ header
 		<%@ include file="/WEB-INF/views/include/include-nav.jspf"%>
 	<section>
 		<c:choose>
-			<c:when test= "${BODY == 'PRO_WRITE'}">
-				<%@ include file="/WEB-INF/views/product/product_write.jspf" %>
+			<c:when test="${BODY == 'PRO_WRITE'}">
+				<%@ include file="/WEB-INF/views/component/product/product_write.jspf" %>
+			</c:when>
+			
+			<c:when test="${BODY == 'PRO_HOME'}">
+				<%@ include file="/WEB-INF/views/component/product/product_list.jspf" %>
 			</c:when>
 			
 			<c:when test="${BODY == 'DEPT_LIST'}">

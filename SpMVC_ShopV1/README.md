@@ -18,3 +18,27 @@
 * ojdbc6
 
 * spring/appServlet/mybatis-context.xml 파일 생성, 작성
+
+
+## URL(Uniform Resource Location), URI(Uniform Resource identifier)
+* URL : 파일 식별자
+* URI : 통합 자원 식별자
+
+### View 에서 사용하는 URL
+* <a href="http://localhost:8080/shop/">서버 Home</a>
+tomcat WAS에게 shop이라는 Context를 가진 project가 작동되고 있느냐? 라고 묻는 Request
+* <a href="http://localhost:8080/shop/">상품리스트</a>
+	shop Context의 Dipatcher 에게 product/list를 수행할 수 있는 Controller method가 있느냐? 라고 묻는 Request
+* 이 HTML 코드를 화면에서 만나면 Hyper Text(anchor 문자열)를 클릭했을때 서버에 Request 한다.
+* 이때 수행하는 Request는 method=RequestMethod.GET 설정된 함수에서 처리한다.
+
+* href : Hyper Text Reference, URL 주소라고 생각하면됨.
+
+### HTML 코드에서 GET method로 Request를 요청하는 곳들
+* anchor tag   : <a href="주소">텍스트</a>
+* Script 에서      : document.location.href = "주소"
+* Script 에서      : document.location.replace("주소")
+* css 가져오기      : <link rel="stylesheet" href="주소">
+* script 가져오기 : <script src="주소"></script>
+* 이미지 보이기       : <img src="주소">
+* 배경 이미지         : background-image("주소")
