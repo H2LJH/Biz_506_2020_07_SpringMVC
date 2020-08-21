@@ -37,6 +37,14 @@ public class ProductController
 		return "home";
 	}
 	
+	@RequestMapping(value="/", method=RequestMethod.POST)
+	public String insert(ProductVO proVO)
+	{
+		int ret = proService.insert(proVO);
+		return "redirect:/product/";
+	}
+	
+	/*
 	@RequestMapping(value = "insert", method=RequestMethod.GET)
 	public String insert(Model model)
 	{
@@ -44,7 +52,7 @@ public class ProductController
 		return "home";
 		//return "product/product_write";
 	}
-		
+
 	@RequestMapping(value = "insert", method=RequestMethod.POST)
 	public String insert(ProductVO proVO)
 	{
@@ -52,4 +60,5 @@ public class ProductController
 		int ret = proService.insert(proVO);
 		return "redirect:/";
 	}
+	*/
 }

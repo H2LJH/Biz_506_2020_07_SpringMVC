@@ -21,16 +21,18 @@
 		<tr>
 			<th>상품코드</th>
 			<th>상품이름</th>
-			<th>주매입처</th>
-			<th>매입가격</th>
-			<th>판매가격</th>
-		</tr>
+			<th>상품사장</th>
+			<th>주전화번</th>
+			<th>거래주소</th>
+			<th>거래책임</th>
+			<th>거래전번</th>
+		</tr>		
 	</thead>
 	<tbody>
-		<c:forEach items="${PRO_LIST}" var="VO">
-			<%@ include file = "/WEB-INF/views/component/product/product_item.jspf" %>
+		<c:forEach items="${DEPT_LIST}" var="vo">
+			<%@ include file = "/WEB-INF/views/component/dept/dept_item.jspf" %>
 		</c:forEach>
 	</tbody>
 </table>
 	
-<%@ include file = "/WEB-INF/views/component/product/product_write.jspf" %>
+<%@ include file = "/WEB-INF/views/component/dept/dept_write.jspf" %>

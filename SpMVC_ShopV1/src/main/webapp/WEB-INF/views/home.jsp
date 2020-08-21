@@ -38,8 +38,12 @@ header
 				<%@ include file="/WEB-INF/views/component/product/product_list.jspf" %>
 			</c:when>
 			
-			<c:when test="${BODY == 'DEPT_LIST'}">
-				<h3>거래처 리스트</h3>
+			<c:when test="${BODY == 'DEPT_WRITE'}">
+				<%@ include file ="/WEB-INF/views/component/dept/dept_write.jspf" %>
+			</c:when>
+			
+			<c:when test="${BODY == 'DEPT_HOME'}">
+				<%@ include file ="/WEB-INF/views/component/dept/dept_list.jspf" %>
 			</c:when>
 			
 			<c:otherwise>
