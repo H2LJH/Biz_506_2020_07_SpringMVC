@@ -1,31 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value = '${pageContext.request.contextPath}'/>
 <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/input.css?ver=2020-8-24"/>
 
 
 <script>
-	/*
-		js 코드를 외부 파일에 작성하고 import 하면
-		jsp파일에서 사용하던 el tag는 사용이 불가능해 진다.
-		src = "${rootPath}/pro/insert" 형식으로 사용하던 코드는 사용이 불가능해진다.
-		그때문에 el tag의 {rootPath} 값을 js의 rrotPath라는 변수로
-		선언해주고 외부의 js 파일에서 사용할수 있도록 해주어야한다.
-	*/
 	var rootPath = "${rootPath}"
 </script>
 <script src="${rootPath}/static/JS/product_input.js?ver=2020-08-24-006"></script>
 
 
- <form method="POST">
+ <form:form>
         <fieldset>
             <legend>상품정보 등록</legend>
             <div>
-            	<label>상품코드</label><input name ="p_code"  id="p_code" value="${PRO_VO.p_code}"/>
-            	<button type="button" id="p_code_gen">코드생성</button>
+            	<label>상품코드</label><form:input path ="p_code" class="m_code"/>
+            	<button type="button" id="p_code_gen" class="m_code_gen">코드생성</button>
             </div>
-            <div><label>상품이름</label><input name ="p_name"  id="p_name"  value="${PRO_VO.p_name}"/></div>
+            <div><label>상품이름</label><input name ="p_name"  id="p_name"  value="${PRO_VO.p_name""/></div>
             <div><label>상품규격</label><input name ="p_std"   id="p_dcode" value="${PRO_VO.p_dcode}"/></div>
             <div><label>주매입처</label><input name ="p_dcode" id="p_std"   value="${PRO_VO.p_std}"/></div>
             <div><label>매입가격</label><input type = "number" name ="P_iprice"  id="p_iprice" value="${PRO_VO.p_iprice}"/></div>
@@ -36,4 +30,4 @@
                 <button type="button" id="btn_save">저장</button>
             </div>
         </fieldset>
-    </form>
+</form:form>

@@ -9,23 +9,21 @@ import com.biz.shop.model.DeptVO;
 import com.biz.shop.persistence.DeptDAO;
 import com.biz.shop.service.DeptService;
 
-@Service
+@Service(value="deptServiceV1")
 public class DeptServiceImplV1 implements DeptService 
 {
-	
 	@Autowired
 	DeptDAO deptDAO;
 	
 	@Override
 	public List<DeptVO> selectAll() {
-		
 		return deptDAO.selectAll();
 	}
 
 	@Override
 	public DeptVO findById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return deptDAO.findById(id);
 	}
 
 	@Override
@@ -44,6 +42,22 @@ public class DeptServiceImplV1 implements DeptService
 	public int delete(String id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String getDCode() {
+		
+		String retDCode = "D001";
+		try 
+		{
+			String maxCode = deptDAO.maxDCode();
+			String preCode = maxCode.substring(0,1);
+			int  dcode = Integer.valueOf(maxCode.substring(1)+1);
+			retDCode = String.format("%s%03d", preCode,dcode);
+			
+		}
+		catch (Exception e) {}
+		return retDCode;
 	}
 
 }

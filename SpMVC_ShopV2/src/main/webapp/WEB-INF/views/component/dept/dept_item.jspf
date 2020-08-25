@@ -3,13 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value = '${pageContext.request.contextPath}'/>
 
-
-<tr>	
-	<td>${vo.d_code}</td>
-	<td>${vo.d_name}</td>
-	<td>${vo.d_ceo}</td>
-	<td>${vo.d_tel}</td>
-	<td>${vo.d_address}</td>
-	<td>${vo.d_manager}</td>
-	<td>${vo.d_mn_tel}</td>
+<tr class="dept_item">
+	<td>${VO.d_code}</td>
+	<td>${VO.d_name}</td>
+	<td>${VO.d_ceo}</td>
+	<td>${VO.d_tel}</td>
+	<td>${VO.d_address}</td>
+	<td>${VO.d_manager}</td>
+	<td>${VO.d_mn_tel}</td>
 </tr>

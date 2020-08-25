@@ -2,38 +2,60 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.biz.shop.persistence.DeptDAO">
-
-	<select id="selectAll" resultType="deptVO">
-		SELECT * FROM tbl_dept
-	</select>
-
-	<insert id="insert">
-	INSERT INTO tbl_dept
-	(
-		D_CODE,
-		D_NAME,
-		D_CEO,
-		D_TEL,
-		D_ADDRESS,
-		D_MANAGER,
-		D_MN_TEL
-	) VALUES (
-		#{d_code},
-		#{d_name},
-		#{d_ceo},
-		#{d_tel},
-		#{d_address},
-		#{d_manager},
-		#{d_mn_tel}
-		)
-	</insert>
-
-	<update id="update">
-	</update>
-
-	<delete id="delete">
-	</delete>
-
-</mapper>
+  
+ <mapper namespace = "com.biz.shop.persistence.DeptDAO">
+    
+    <select id="selectAll" resultType="DeptVO">
+    	SELECT * FROM tbl_dept WHERE d_not_use IS NULL
+    </select>
+    
+    <select id="FindById" resultType="DeptVO">
+    	SELECT * FROM tbl_dept WHERE d_code = #{id}
+    </select>
+    
+    
+ 	<insert id="insert">
+ 		INSERT INTO tbl_dept
+ 		(
+			D_CODE,
+			D_NAME,
+			D_CEO,
+			D_TEL,
+			D_ADDRESS,
+			D_MANAGER,
+			D_MN_TEL
+ 		) VALUES (
+			#{d_code},
+			#{d_name},
+			#{d_ceo},
+			#{d_tel},
+			#{d_address},
+			#{d_manager},
+			#{d_mn_tel}
+ 		)
+ 		
+   </insert>
+   <!-- 
+   		Java에서 VO에 null값을 담았을때
+   		DB의 table에 vo의 값을 사용하여 insert, update를 수행하려고 하면
+   		Java의 null값과 DB의 null값이 개념적으로 차이가 있어서
+   		오류가 발생을 한다. 부적절한 열유형 1111
+    -->
+ 	<update id="update">
+ 		UPDATE tbl_product SET
+			P_NAME	  = #{p_name,    jdbcType=VARCHAR},
+			P_DCODE	  = #{p_dcode,   jdbcType=VARCHAR},
+			P_STD	  = #{p_std,     jdbcType=VARCHAR},
+			P_IPRICE  = #{p_iprice,  jdbcType=VARCHAR},
+			P_OPRICE  = #{p_oprice,  jdbcType=VARCHAR},
+			P_IMAGE	  = #{p_image,   jdbcType=VARCHAR},
+			P_NOT_USE = #{p_not_use, jdbcType=VARCHAR}
+		WHERE  P_CODE = #{p_code,    jdbcType=VARCHAR}
+   </update>
+   
+ 	<delete id="delete">
+   </delete>
+   
+   
+ 
+ </mapper>

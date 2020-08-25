@@ -6,4 +6,6 @@ import com.biz.shop.persistence.GenericDAO;
 public interface DeptService extends GenericDAO<DeptVO, String>
 {
 
+	public String getDCode();
+
 }

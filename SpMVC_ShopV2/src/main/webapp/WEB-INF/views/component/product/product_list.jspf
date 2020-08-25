@@ -77,7 +77,7 @@ article a:hover {
 			// 자손 tag들 중에 0번째에 있는 자손의 text값을 가져와서
 			// p_code 변수에 담아라
 			const p_code = $(this).children().eq(0).text()
-			document.location.href = "${rootPath}/product/detail?p_code=" + p_code
+			document.location.href = "${rootPath}/product/detail?id=" + p_code
 			//const pcode1 = $(this).data("pcode")
 		})
 	})
