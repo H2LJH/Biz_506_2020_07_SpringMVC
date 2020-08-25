@@ -6,7 +6,7 @@
  <mapper namespace = "com.biz.shop.persistence.DeptDAO">
     
     <select id="selectAll" resultType="DeptVO">
-    	SELECT * FROM tbl_dept WHERE d_not_use IS NULL
+    	SELECT * FROM tbl_dept
     </select>
     
     <select id="FindById" resultType="DeptVO">

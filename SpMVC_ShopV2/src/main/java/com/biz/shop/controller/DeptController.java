@@ -28,13 +28,8 @@ public class DeptController
 	@Qualifier("deptServiceV1")
 	private DeptService dService;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String home(Model model)
-	{
-		model.addAttribute("BODY", "DEPT_LIST");
-		return "home";
-	}
 	
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String list(Model model)
 	{
 		List<DeptVO> deptList = dService.selectAll();
@@ -60,6 +55,13 @@ public class DeptController
 		return "redirect:/dept/";
 	}
 	
+	/*
+	 * 
+	 * @ResponseBody
+	 * view를 rendering 하지 않고 직접 값을 client로 전송하라
+	 * return "D001" 문자열 D001을 client로 전송하라
+	 * 
+	 */
 	@ResponseBody
 	@RequestMapping(value="/get_dcode", method = RequestMethod.GET)
 	public String getDCode()
