@@ -2,6 +2,8 @@ package com.biz.shop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -28,8 +30,15 @@ public class ProductController
 	
 	// 상품 리스트 보이기
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String proHome(Model model)
+	public String proHome(Model model, HttpSession httpsession)
 	{
+		Object obj = httpsession.getAttribute("LOGIN");
+		if(obj == null)
+		{
+			model.addAttribute("BODY", "LOGIN");
+			model.addAttribute("MSG", "로그인을 해야합니다.");
+			return "redirect:/member/login";
+		}
 		// 전체 상품리스트를 SELECT 
 		List<ProductVO> proList = proService.selectAll();
 		

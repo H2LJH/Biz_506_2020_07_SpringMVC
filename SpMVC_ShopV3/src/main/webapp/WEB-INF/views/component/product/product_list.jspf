@@ -69,32 +69,36 @@ article a:hover {
 <script>
 	$(function()
 	{
-		$(".dept_item").click(function()
+		$(".pro_item").click(function()
 		{
-			const d_code = $(this).children().eq(0).text()
-			document.location.href = "${rootPath}/dept/detail?id=" + d_code
+			// tr들 중에 한 항목을 클릭하면 
+			// 그 항목에 대한 정보가 this 담겨 있게 된다.
+			// this에 담긴 정보중에 자손 tag(td)을 찾고
+			// 자손 tag들 중에 0번째에 있는 자손의 text값을 가져와서
+			// p_code 변수에 담아라
+			const p_code = $(this).children().eq(0).text()
+			document.location.href = "${rootPath}/product/detail?id=" + p_code
 			//const pcode1 = $(this).data("pcode")
 		})
 	})
 </script>
+
 <table>
 	<thead>
 		<tr>
-			<th>코드</th>
-			<th>거래처명</th>
-			<th>대표자명</th>
-			<th>주소</th>
-			<th>대표전화</th>
-			<th>담당자</th>
-			<th>담당연락처</th>
+			<th>상품코드</th>
+			<th>상품이름</th>
+			<th>주매입처</th>
+			<th>매입가격</th>
+			<th>판매가격</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${DEPT_LIST}" var="VO">
-			<%@ include file = "/WEB-INF/views/component/dept/dept_item.jspf" %>
+		<c:forEach items="${PRO_LIST}" var="VO">
+			<%@ include file = "/WEB-INF/views/component/product/product_item.jspf" %>
 		</c:forEach>
 	</tbody>
 </table>
 <article>
-	<a href="${rootPath}/dept/insert">거래처 추가</a>
+	<a href="${rootPath}/product/insert">상품추가</a>
 </article>	

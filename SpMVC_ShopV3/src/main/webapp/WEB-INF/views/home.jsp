@@ -31,6 +31,7 @@ header
 		<%@ include file="/WEB-INF/views/include/include-nav.jspf"%>
 	<section>
 		<c:choose>
+	
 			<c:when test="${BODY == 'PRO_WRITE'}">
 				<%@ include file="/WEB-INF/views/component/product/product_writeV2.jspf" %>
 			</c:when>
@@ -41,9 +42,9 @@ header
 			
 			<c:when test="${BODY == 'PRO_DETAIL'}">
 				<%@ include file ="/WEB-INF/views/component/product/product_detail.jspf" %>
-			</c:when>
-			
-			
+			</c:when>	
+	
+
 			<c:when test="${BODY == 'DEPT_WRITE'}">
 				<%@ include file = "/WEB-INF/views/component/dept/dept_write.jspf" %>
 			</c:when>
@@ -55,8 +56,17 @@ header
 			<c:when test="${BODY == 'DEPT_DETAIL'}">
 				<%@ include file = "/WEB-INF/views/component/dept/dept_detail.jspf" %>
 			</c:when>
+
+
+			<c:when test="${BODY == 'MEM_WRITE'}">
+				<%@ include file = "/WEB-INF/views/component/member/member_write.jspf" %>
+			</c:when>
 			
-			
+			<c:when test="${BODY == 'LOGIN'}">
+				<%@ include file = "/WEB-INF/views/component/member/member_login.jspf" %>
+			</c:when>
+
+
 			<c:otherwise>
 				<%@ include file="/WEB-INF/views/include/include-main.jspf" %>
 			</c:otherwise>
