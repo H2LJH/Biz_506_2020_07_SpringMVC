@@ -22,7 +22,7 @@ public class BBsSQL
 		sql.INTO_COLUMNS("b_writer").INTO_VALUES("#{b_writer}");
 		sql.INTO_COLUMNS("b_subject").INTO_VALUES("#{b_subject}");
 		sql.INTO_COLUMNS("b_content").INTO_VALUES("#{b_content}");
-		
+		sql.INTO_COLUMNS("b_file").INTO_VALUES("#{b_file}");
 		return sql.toString();
 	}
 		

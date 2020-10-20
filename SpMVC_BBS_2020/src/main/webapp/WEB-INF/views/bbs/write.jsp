@@ -88,7 +88,7 @@ $(function()
 	$("#b_content").summernote
 	({
 		lang:"ko-KR",
-		width:"100%",
+		width:"80%",
 		height:"200px",
 		toolbar : toolbar
 	});
@@ -96,7 +96,7 @@ $(function()
 </script>
 
 
-<form id="write-form" method="post">
+<form id="write-form" method="post" enctype="multipart/form-data">
 	<fieldset>
 	<legend>글쓰기</legend>
 		<div>
@@ -123,6 +123,14 @@ $(function()
 			<label></label>
 			<textarea id="b_content" rows="5" cols="20" name="b_content"></textarea>
 		</div>
+		
+		
+		<div>
+			<label>이미지</label>
+			<input type ="file" name="file" accept="image/*">
+		</div>
+		
+		
 		<div class="button-box">
 			<button type="button" id="list">리스트</button>
 			<button type="submit" id="save">저장</button>

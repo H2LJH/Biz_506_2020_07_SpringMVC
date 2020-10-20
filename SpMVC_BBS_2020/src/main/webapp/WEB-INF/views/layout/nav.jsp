@@ -5,9 +5,15 @@
 <script>
 	document.addEventListener("DOMContentLoaded", ()=>
 	{
+		
+		document.querySelector("#nav-home").addEventListener("click", () =>
+		{
+			document.location.href="${rootPath}/";
+		})
+		
 		document.querySelector("#nav-bbs").addEventListener("click", ()=>
 		{
-				document.location.href="${rootPath}/bbs/list"
+				document.location.href="${rootPath}/bbs/list";
 		})
 	})
 </script>
@@ -15,7 +21,7 @@
 
 <nav>
 	<ul>
-		<li>Home</li>
+		<li id="nav-home">Home</li>
 		<li id="nav-bbs">자유게시판</li>
 	</ul>
 </nav>

@@ -24,8 +24,15 @@ public class BBsServiceIMPLV1 implements BBsService
 	}
 
 	@Override
+	public BBsVO findById(long long_seq) 
+	{
+		return bbsDAO.findBySeq(long_seq);
+	}
+	
+	@Override
 	public void insert(BBsVO bbsVO) 
 	{
 		bbsDAO.insert(bbsVO);
 	}
+
 }

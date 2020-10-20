@@ -12,6 +12,5 @@
 <title>나의 홈페이지</title>
 </head>
 <body>
-	home.jsp
 </body>
 </html>
