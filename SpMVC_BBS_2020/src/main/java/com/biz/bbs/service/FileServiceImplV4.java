@@ -25,16 +25,27 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-@RequiredArgsConstructor
 @Service("fileServiceV4")
 public class FileServiceImplV4 extends FileServiceImplV1 
 {
-
+	/*
+	 * 필드(멤버)변수를 private final로 선언했을 경우
+	 * 보통 final로 선언된 변수는 선언과 동시에 생성(초기화)를 해야한다.
+	 * private final로 선언된 맴버변수는 클래스의 생성자 메서드에서 초기화하는 것을 허용한다.
+	 * 
+	 * private final로 선언된 맴버변수는 반드시 클래스의 생성자 메서드에서 초기화를 해야한다.
+	 */
+	private final String rootFolder;
+	
+	public FileServiceImplV4() 
+	{
+		rootFolder = "C:/bizwork/workspace/upload";
+	}
+	
 	@Override
 	public String fileUp(MultipartFile file) 
 	{
-		String rootForder = "C:/bizwork/workspace/upload";
-		File dir = new File(rootForder);
+		File dir = new File(rootFolder);
 		
 		if(!dir.exists()) // file을 upload할 폴더를 검사하여 없으면 새로 생성해달라
 			dir.mkdirs(); // mkdir() 제일끝의 폴더1개만 생성 mkdirs() 모든경로의 폴더를 한꺼번에 생성 
@@ -55,7 +66,7 @@ public class FileServiceImplV4 extends FileServiceImplV1
 		
 		
 		// 서버의 저장폴더 + 파일이름을 합성하여 파일 저장준비
-		File saveFile = new File(rootForder, saveFileName);
+		File saveFile = new File(rootFolder, saveFileName);
 		
 		try   { file.transferTo(saveFile);  } 
 		catch (IllegalStateException e)  { e.printStackTrace(); } 
@@ -63,6 +74,19 @@ public class FileServiceImplV4 extends FileServiceImplV1
 		
 		return saveFileName;
 		
+	}
+	
+	
+	 
+	@Override
+	public boolean fileDelete(String b_file) // 파일 이름을 받아서 파일을 삭제 
+	{
+		boolean ret = false;
+		File deleteFile = new File(rootFolder, b_file);
+		if(deleteFile.exists())
+			ret = deleteFile.delete();
+		
+		return ret; // 삭제성공 = true
 	}
 	
 }

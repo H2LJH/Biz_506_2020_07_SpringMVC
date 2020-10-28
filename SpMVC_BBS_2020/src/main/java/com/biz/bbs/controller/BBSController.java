@@ -26,11 +26,7 @@ public class BBSController {
 	@Autowired
 	@Qualifier("bbsServiceV1")
 	private BBsService bbsservice;
-	
-	@Autowired
-	@Qualifier("fileServiceV4")
-	private FileService fileService;
-	
+		
 	/*
 	 *  return문에 bbs/list 문자열이 있으면
 	 *  1. tiles-layout.xml 에서 bbs/list로 설정된 항목을 검사
@@ -68,11 +64,7 @@ public class BBSController {
 		
 		log.debug("업로드한 파일 이름 : " + file.getOriginalFilename());
 		
-		String fileName = fileService.fileUp(file);
-		System.out.println(fileName);
-		bbsVO.setB_file(fileName);
-		bbsservice.insert(bbsVO);
-		
+		bbsservice.insert(bbsVO, file);
 		return "redirect:/bbs/list";
 	}
 	
@@ -85,4 +77,22 @@ public class BBSController {
 		return "bbs/detail";
 	}
 	
+	
+	@RequestMapping(value="/{seq}/{url}", method = RequestMethod.GET)
+	public String update(@PathVariable("seq") String seq, @PathVariable("url")String url, Model model)
+	{
+		String ret_url = "redirect:/bbs/list";
+		long long_seq = Long.valueOf(seq);
+		
+		if(url.equalsIgnoreCase("DELETE"))
+			bbsservice.delete(long_seq);
+		
+		else if(url.equalsIgnoreCase("UPDATE"))	
+		{
+			model.addAttribute("BBSVO", bbsservice.findById(long_seq));
+			ret_url = "bbs/write";
+		}
+		
+		return ret_url;
+	}
 }

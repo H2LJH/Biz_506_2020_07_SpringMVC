@@ -42,7 +42,71 @@ section#bbs-detail-body {
 	margin:10px auto;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.5)
 }
+
+section#bbs-button-box{
+	width:50%;
+	margin:10px auto;
+	text-align: right;
+}
+
+section#bbs-button-box button{
+	margin: 10px;
+	padding: 10px 16px;
+	border:0;
+	outline:0;
+	border-radius: 5px;
+}
+
+section#bbs-button-box button:hover{
+	box-shadow: 2px 2px 2px rgba(0,0,0, 0.6);
+}
+
+section#bbs-button-box button:nth-child(1) {
+	background-color: green;
+}
+
+section#bbs-button-box button:nth-child(2) {
+	background-color: blue;
+}
+
+section#bbs-button-box button:nth-child(3) {
+	background-color: orange;
+}
+
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", ()=>
+{
+	document.querySelector("#bbs-button-box").addEventListener("click", function(event)
+	{
+		let url = "${rootPath}/bbs/${BBSVO.b_seq}/";
+		if(event.target.tagName === ("BUTTON"))
+		{
+			if(event.target.className == "delete")
+				if(!confirm("정말 삭제할까요?"))
+					{
+						let data = { seq : "${BBSVO.b_seq}" }
+						fetch( "${rootPath}/api/bbs",
+						{  
+							method : "DELETE",
+							headers : {"Content-Type" : "application/json"},
+							body: JSON.stringify(data)
+						})
+						.then(function(result){ alert(result)} )
+						.catch(function(error){ alert("실패") })
+						return false;
+					}
+			
+			document.location.href= url + event.target.className;
+		}
+	})
+})
+
+
+
+</script>
+
 
 <section id="bbs-detail-header">
 	<article><img src="${rootPath}/upload/${BBSVO.b_file}" width="200px"></article>
@@ -53,5 +117,13 @@ section#bbs-detail-body {
 	</article>
 </section>
 <section id="bbs-detail-body">
-{BBSVO.b_content}
+${BBSVO.b_content}
 </section>
+
+<section id="bbs-button-box">
+	<button class="list">리스트</button>
+	<button class="update">수정</button>
+	<button class="delete">삭제</button>
+</section>
+
+
