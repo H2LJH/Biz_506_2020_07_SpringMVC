@@ -1,5 +1,7 @@
 package com.biz.bbs.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,11 +10,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
-
-public class BBsVO {
+@NoArgsConstructor
+@AllArgsConstructor
+public class BBsVO{
 
 	private long b_seq;
 	private String b_date;
@@ -23,4 +24,9 @@ public class BBsVO {
 	private int b_count;
 	private String b_file;
 
+	private List<ImageVO> images;
+	
+	
+	
+	
 }

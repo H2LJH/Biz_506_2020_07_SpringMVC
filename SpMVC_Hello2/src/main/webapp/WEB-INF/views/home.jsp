@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My HomePage</title>
+<title>나의 웹서비스</title>
 </head>
 <body>
 	<h1>반갑습니다</h1>
-
-	<P>서버의 현재 시간 : ${serverTime}.</P>
+	<P>서버의 현재 시각 : ${serverTime}.</P>
 </body>
 </html>

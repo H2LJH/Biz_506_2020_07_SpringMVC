@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="rootPath" value = '${pageContext.request.contextPath}'/>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
-	table{
+	table {
 		border-collapse: collapse;
 		border:1px solid green;
 		width:80%;
 		margin:10px auto;
 	}
-
-	th, td{
+	th, td {
 		border:1px solid green;
 	}
-</style>
-
+</style>        
 <table>
 	<thead>
 		<tr>
@@ -28,9 +25,9 @@
 	</thead>
 	<tbody>
 		<c:forEach items="${PRO_LIST}" var="VO">
-			<%@ include file = "/WEB-INF/views/component/product/product_item.jspf" %>
+			<%@ include 
+				file="/WEB-INF/views/component/product/product_item.jspf" %>	
 		</c:forEach>
 	</tbody>
 </table>
-	
-<%@ include file = "/WEB-INF/views/component/product/product_write.jspf" %>
+

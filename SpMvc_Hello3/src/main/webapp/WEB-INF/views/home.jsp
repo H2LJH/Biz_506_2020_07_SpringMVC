@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">	
-	<title>Home</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-	<%@ include file = "/WEB-INF/views/Include/include-nav.jsp" %>
-	<h3>여기는 Home</h3>
+	<%@ include file="/WEB-INF/views/include/include-nav.jsp" %>
+	<h4>나는 home</h4>
 </body>
 </html>

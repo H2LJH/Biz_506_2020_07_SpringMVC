@@ -43,8 +43,6 @@ public class AuthProviderImpl implements AuthenticationProvider{
 		// String username = authentication.getPrincipal().toString();
 		String username = authentication.getName();
 		
-		System.out.println(username);
-		
 		// username "admin" or "user1" or "guest"
 		boolean bUser = username.equals("admin");
 		bUser |= username.equals("user1");
@@ -82,35 +80,32 @@ public class AuthProviderImpl implements AuthenticationProvider{
 		UserVO userVO = new UserVO();
 		log.debug("USER VO : " + userVO.isAccountNonExpired());
 		
-		if(!userVO.isEnabled())
+		if(!userVO.isEnabled()) {
 			throw new DisabledException("사용자정보를 사용할수 없습니다");
-		
-		if(!userVO.isAccountNonLocked()) 
+		}
+		if(!userVO.isAccountNonLocked()) {
 			throw new LockedException("사용자 계정이 잠겨 있습니다"
 					+ " 관리자에게 문의 하세요");
-		
-		if(!userVO.isAccountNonExpired())
+		}
+		if(!userVO.isAccountNonExpired()) {
 			throw new AccountExpiredException("사용자 계정이 만료되었습니다");
-		
-		
-		if(!userVO.isCredentialsNonExpired()) 
+		}
+		if(!userVO.isCredentialsNonExpired()) {
 			throw new CredentialsExpiredException("사용자 계정의 권한이 없습니다");
-		
+		}
 		
 		// ROLE 정보 테스트 값 생성
 		// 사용자ID에 부여된 ROLE List를 만들어서 추가하고
 		// JSP 등에서 사용해 보자
 		List<GrantedAuthority> authList = new ArrayList<>();
 		
-		if(username.equals("admin")) 
+		if(username.equals("admin")) {
 			authList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		
-		 else if (username.equals("user1")) 
+		} else if (username.equals("user1")) {
 			authList.add(new SimpleGrantedAuthority("ROLE_USER"));	
-		 
-		 else 
+		} else {
 			authList.add(new SimpleGrantedAuthority("ROLE_GUEST"));	
-		
+		}
 		
 		// 로그인만 성공을 하고 ROLE 정보 인가정보들이 모두 false인
 		// 사용자 데이터를 생성하고

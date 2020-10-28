@@ -6,70 +6,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.biz.shop.model.ProductVO;
-import com.biz.shop.persistence.ProductDAO;
+import com.biz.shop.persistence.ProductDao;
 import com.biz.shop.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 
-
-/*
- * ProductService 인터페이스는 GenericService 인터페이스를 상속(extends)하므로서
- * CRUD 기본 method를 별도로 선언하지 않아도 된다.
- * 필요한 추가 method가 있으면 별도로 선언을 해주고 
- * 이 interface를 implements한 클래스는 인터페이스의 영향을 받아 method를 구현하게 된다.
- */
-
 @Slf4j
 @Service(value="proServiceV1")
-public class ProductServiceImplV1 implements ProductService 
-{
+public class ProductServiceImplV1 implements ProductService{
+	
 	@Autowired
-	private ProductDAO proDAO;
-	
-	
+	private ProductDao proDao;
+
 	@Override
-	public List<ProductVO> selectAll() 
-	{
-		return proDAO.selectAll();
+	public List<ProductVO> selectAll() {
+		return proDao.selectAll();
 	}
 
 	@Override
-	public ProductVO findById(String id) 
-	{
+	public ProductVO findByID(String id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int insert(ProductVO vo) 
-	{
-		vo.setP_image("이미지 없음");
-		int ret = proDAO.insert(vo);
+	public int insert(ProductVO vo) {
+		// TODO Auto-generated method stub
 		
-		if(ret >0)
-			log.debug("INSERT 성공 {} 개 데이터 추가", ret);
+		vo.setP_image("이미지없음");
+		int ret = proDao.insert(vo);
 		
-		else
+		if(ret > 0) {
+			log.debug("INSERT 성공 {} 개 데이터 추가",ret);
+		} else {
 			log.debug("INSERT 실패 {}", ret);
-		
+		}
 		return ret;
+	
 	}
 
 	@Override
-	public int update(ProductVO vo) 
-	{
+	public int update(ProductVO vo) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delete(String id) 
-	{
+	public int delete(String id) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<ProductVO> findByTitle(String title) 
-	{
+	public List<ProductVO> findByTitle(String title) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
 }

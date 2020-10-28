@@ -4,15 +4,13 @@ import java.util.List;
 
 import com.biz.hello.model.StudentVO;
 
-public interface StudentService 
-{
+public interface StudentService {
+	
 	public List<StudentVO> selectAll();
+	public StudentVO findByStNum(String st_num);
 	
-	public StudentVO findByStnum(String st_num);
-	
-	public int insert(StudentVO vo);
-	
-	public int update(StudentVO vo);
-	
+	public int insert(StudentVO studentVO);
+	public int update(StudentVO studentVO);
 	public int delete(String st_num);
+	
 }

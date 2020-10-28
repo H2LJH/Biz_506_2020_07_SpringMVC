@@ -16,43 +16,38 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biz.shop.model.DeptVO;
 import com.biz.shop.service.DeptService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-@RequestMapping(value ="/dept")
+@RequestMapping(value="/dept")
 @Controller
-public class DeptController 
-{
+public class DeptController {
 	
 	@Autowired
 	@Qualifier("deptServiceV1")
-	private DeptService dService;
-	
-	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String list(Model model)
-	{
+	private DeptService dService;	
+
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String list(Model model) {
+		
 		List<DeptVO> deptList = dService.selectAll();
-		model.addAttribute("DEPT_LIST", deptList);
-		model.addAttribute("BODY", "DEPT_HOME");
+		model.addAttribute("DEPT_LIST",deptList);
+		model.addAttribute("BODY","DEPT_LIST");
 		return "home";
 	}
 	
-	
-	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public ModelAndView insert(@ModelAttribute("DEPT_VO") DeptVO deptVO)
-	{
+	@RequestMapping(value="/insert",method=RequestMethod.GET)
+	public ModelAndView insert(@ModelAttribute("DEPT_VO") DeptVO deptVO) {
+		
 		ModelAndView model = new ModelAndView();
-		model.addObject("BODY", "DEPT_WRITE");
+		model.addObject("BODY","DEPT_WRITE");
 		model.setViewName("home");
 		return model;
 	}
 	
-	@RequestMapping(value="/insert", method=RequestMethod.POST)
-	public String insert(@ModelAttribute("DEPT_VO") DeptVO deptVO, Model model)
-	{
+	@RequestMapping(value="/insert",method=RequestMethod.POST)
+	public String insert(@ModelAttribute("DEPT_VO") DeptVO deptVO,Model model) {
+		
 		int ret = dService.insert(deptVO);
 		return "redirect:/dept/";
+	
 	}
 	
 	/*
@@ -63,20 +58,26 @@ public class DeptController
 	 * 
 	 */
 	@ResponseBody
-	@RequestMapping(value="/get_dcode", method = RequestMethod.GET)
-	public String getDCode()
-	{
+	@RequestMapping(value="/get_dcode",method=RequestMethod.GET)
+	public String getDCode() {
+
 		String d_code = dService.getDCode();
 		return d_code;
+		
 	}
-	@RequestMapping(value = "/detail", method=RequestMethod.GET)
-	public String detail(@RequestParam("id")String d_code, Model model)
-	{
-		DeptVO deptVO = dService.findById(d_code);
-		model.addAttribute("DEPT_VO", deptVO);
-		model.addAttribute("BODY", "DEPT_DETAIL");
+	
+	@RequestMapping(value="/detail",method=RequestMethod.GET)
+	public String detail(@RequestParam("id") String d_code, Model model) {
+		
+		DeptVO deptVO = dService.findByID(d_code);
+		model.addAttribute("DEPT_VO",deptVO);
+		model.addAttribute("BODY","DEPT_DETAIL");
 		return "home";
+	
 	}
+
+	
+	
 	
 	
 	

@@ -3,12 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace = "com.biz.shop.persistence.ProductDAO">
-    
+ <mapper namespace="com.biz.shop.persistence.ProductDao">
+ 
+
  	<insert id="insert">
- 		INSERT INTO tbl_product
- 		(
- 			P_CODE,
+ 		INSERT INTO tbl_product(
+	 		P_CODE,
 			P_NAME,
 			P_DCODE,
 			P_STD,
@@ -16,7 +16,7 @@
 			P_OPRICE,
 			P_IMAGE
  		) VALUES (
- 			#{p_code},
+	 		#{p_code},
 			#{p_name},
 			#{p_dcode},
 			#{p_std},
@@ -24,29 +24,28 @@
 			#{p_oprice},
 			#{p_image}
  		)
- 		
-   </insert>
-   <!-- 
-   		Java에서 VO에 null값을 담았을때
-   		DB의 table에 vo의 값을 사용하여 insert, update를 수행하려고 하면
-   		Java의 null값과 DB의 null값이 개념적으로 차이가 있어서
-   		오류가 발생을 한다. 부적절한 열유형 1111
-    -->
+ 	</insert>
+ 	<!-- 
+ 	java에서 vo에 null값을 담았을때
+ 	DB의 table에 vo의 값을 사용하여 insert, update를 수행하려고 하면
+ 	java null값과 DB의 null값이 개념적으로 차이가 있어서
+ 	오류가 발생을 한다. '부적절한 열유형 1111'
+ 	
+ 	#{p_name,jdbcType=VARCHAR} 설정
+ 	java의 vo에 담겨있는 null값을 DBMS 유형에 맞는 null 값으로 변환하여
+ 	insert, update를 수행하라
+ 	 -->
  	<update id="update">
  		UPDATE tbl_product SET
-			P_NAME	  = #{p_name,    jdbcType=VARCHAR},
-			P_DCODE	  = #{p_dcode,   jdbcType=VARCHAR},
-			P_STD	  = #{p_std,     jdbcType=VARCHAR},
-			P_IPRICE  = #{p_iprice,  jdbcType=VARCHAR},
-			P_OPRICE  = #{p_oprice,  jdbcType=VARCHAR},
-			P_IMAGE	  = #{p_image,   jdbcType=VARCHAR},
-			P_NOT_USE = #{p_not_use, jdbcType=VARCHAR}
-		WHERE  P_CODE = #{p_code,    jdbcType=VARCHAR}
-   </update>
-   
- 	<delete id="delete">
-   </delete>
-   
-   
+			p_name		= #{p_name, jdbcType=VARCHAR },
+			p_dcode		= #{p_dcode, jdbcType=VARCHAR },
+			p_std		= #{p_std, jdbcType=VARCHAR },
+			p_iprice	= #{p_iprice, jdbcType=VARCHAR },
+			p_oprice	= #{p_oprice, jdbcType=VARCHAR },
+			p_image		= #{p_image, jdbcType=VARCHAR },
+			p_not_use	= #{p_not_use}
+		WHERE p_code	= #{p_code, jdbcType=VARCHAR }
+ 	</update>
+ 	<delete id="delete"></delete>
  
- </mapper>
+ </mapper> 

@@ -4,12 +4,12 @@ import org.apache.ibatis.annotations.Select;
 
 import com.biz.shop.model.MemberVO;
 
-public interface MemberDAO extends GenericDAO<MemberVO, String> 
-{
+public interface MemberDao extends GenericDao<MemberVO, String>{
 
-	@Select( "SELECT COUNT(*) FROM tbl_member")
+	@Select(" SELECT COUNT(*) FROM tbl_member ")
 	public int memberCount();
 
+	
 	
 	
 }

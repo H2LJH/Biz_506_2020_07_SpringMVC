@@ -15,22 +15,33 @@
 	// load event는 좀 오래전에 지정된 event이다.
 	// 원래 이 event window.onLoad() event를 감싸는 핸들링이다.
 	// 최근의 JS에서는 별로 사용을 권하지 않는 evnet 이다.
-	document.addEventListener("DOMContentLoaded",function()
-	{
-		document.querySelector("#menu-home").addEventListener("click",function()
-		{ document.location.href = "${rootPath}/" })
+	window.addEventListener("load",function(){
 		
-		document.querySelector("#menu-center").addEventListener("click",function()
-		{ document.location.href = "${rootPath}/admin" })
-		
-		document.querySelector("#menu-join").addEventListener("click",function()
-		{ document.location.href = "${rootPath}/user/join" })
-		
-		document.querySelector("#menu-login").addEventListener("click",function()
-		{ document.location.href = "${rootPath}/user/login" })
-		
-		document.querySelector("#menu-mypage").addEventListener("click",function()
-		{ document.location.href = "${rootPath}/user/mypage" })
+		document
+			.querySelector("#menu-home")
+			.addEventListener("click",function(){
+			document.location.href = "${rootPath}/"
+		})
+		document
+			.querySelector("#menu-center")
+			.addEventListener("click",function(){
+			document.location.href = "${rootPath}/admin"
+		})
+		document
+			.querySelector("#menu-join")
+			.addEventListener("click",function(){
+			document.location.href = "${rootPath}/user/join"
+		})
+		document
+			.querySelector("#menu-login")
+			.addEventListener("click",function(){
+			document.location.href = "${rootPath}/user/login"
+		})
+		document
+			.querySelector("#menu-mypage")
+			.addEventListener("click",function(){
+			document.location.href = "${rootPath}/user/mypage"
+		})
 	})
 </script>       
 <nav id="main-nav">

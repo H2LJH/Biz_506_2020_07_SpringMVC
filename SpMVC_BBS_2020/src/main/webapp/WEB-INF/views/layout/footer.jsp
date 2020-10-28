@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-<c:set var="rootPath" value='${pageContext.request.contextPath}' />
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />        
 <footer>
-	<address>CopyRight &copy; h2ljh@naver.com</address>
+	<address>CopyRight &copy; callor@callor.com</address>
 </footer>

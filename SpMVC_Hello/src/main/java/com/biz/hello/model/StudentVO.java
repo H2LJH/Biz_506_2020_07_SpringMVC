@@ -1,33 +1,22 @@
 package com.biz.hello.model;
 
-public class StudentVO 
-{
+public class StudentVO {
+	
 	private String st_num;
 	private String st_name;
 	private String st_tel;
 	private String st_addr;
 	private int st_grade;
-
 	
-	public StudentVO() 
-	{
+	public StudentVO() {
 	}
-	
-	public StudentVO(String st_num, String st_name, String st_tel, String st_addr, int st_grade) 
-	{
+	public StudentVO(String st_num, String st_name, String st_tel, String st_addr, int st_grade) {
 		super();
 		this.st_num = st_num;
 		this.st_name = st_name;
 		this.st_tel = st_tel;
 		this.st_addr = st_addr;
 		this.st_grade = st_grade;
-	}
-
-	@Override
-	public String toString() 
-	{
-		return "StudentVO [st_num=" + st_num + ", st_name=" + st_name + ", st_tel=" + st_tel + ", st_addr=" + st_addr
-				+ ", st_grade=" + st_grade + "]";
 	}
 	
 	public String getSt_num() {
@@ -60,5 +49,15 @@ public class StudentVO
 	public void setSt_grade(int st_grade) {
 		this.st_grade = st_grade;
 	}
+	
+	@Override
+	public String toString() {
+		return "StudentVO [st_num=" + st_num + ", st_name=" + st_name + ", st_tel=" + st_tel + ", st_addr=" + st_addr
+				+ ", st_grade=" + st_grade + "]";
+	}
+	
+	
+	
+	
 
 }

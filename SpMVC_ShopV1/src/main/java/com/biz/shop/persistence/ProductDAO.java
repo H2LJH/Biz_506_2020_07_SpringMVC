@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.biz.shop.model.ProductVO;
 
-public interface ProductDAO extends GenericDAO<ProductVO, String> 
-{
+public interface ProductDao extends GenericDao<ProductVO, String>{
+	
 	public List<ProductVO> findByTitle(String title);
+
 }

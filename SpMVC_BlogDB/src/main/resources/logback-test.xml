@@ -8,20 +8,22 @@
         </layout>
     </appender>
 	<!-- 
-		level 순위 (순위가 높을수록 하위 level 무시함)
-		1 FATAL : log.fatal()
-		2 ERROR : log.error()
-		3 WARN  : log.warn()
-		4 INFO  : log.info()
-		5 DEBUG : log.debug()
-		6 TRACE : log.trace()
-	 -->
-
-
-    <logger name="org.springframework" level="INFO" />
-    <logger name="org.mybatis"><level value="INFO"/></logger>
-    <logger name="com.biz.blog"><level value="DEBUG"/></logger>
-        <root level="TRACE">
+	level 순위 : 순위를 설정하면 하위 순위의 method는 무시된다.
+		FATAL : log.fatal()
+		ERROR : log.error()
+		WARN : log.warn()
+		INFO : log.info()
+		DEBUG : log.debug()
+		TRACE : log.trace()
+	-->
+    <logger name="org.springframework" level="WARN" />
+    <logger name="org.mybatis">
+    	<level value="INFO"/>
+    </logger>
+    <logger name="com.biz.blog">
+    	<level value="DEBUG"/>
+    </logger>
+	<root level="WARN">
         <appender-ref ref="console"/>
     </root>
-</configuration>
+</configuration>    

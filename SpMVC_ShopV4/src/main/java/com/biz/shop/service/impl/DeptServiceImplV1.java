@@ -6,30 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.biz.shop.model.DeptVO;
-import com.biz.shop.persistence.DeptDAO;
+import com.biz.shop.persistence.DeptDao;
 import com.biz.shop.service.DeptService;
 
 @Service(value="deptServiceV1")
-public class DeptServiceImplV1 implements DeptService 
-{
+public class DeptServiceImplV1 implements DeptService{
+
 	@Autowired
-	DeptDAO deptDAO;
+	private DeptDao deptDao;
 	
 	@Override
 	public List<DeptVO> selectAll() {
-		return deptDAO.selectAll();
+
+		return deptDao.selectAll();
+		// return null;
 	}
 
 	@Override
-	public DeptVO findById(String id) {
-		// TODO Auto-generated method stub
-		return deptDAO.findById(id);
+	public DeptVO findByID(String id) {
+
+		return deptDao.findByID(id);
+		
+		// return null;
 	}
 
 	@Override
 	public int insert(DeptVO vo) {
-		int ret = deptDAO.insert(vo);
-		return ret;
+		return deptDao.insert(vo);
 	}
 
 	@Override
@@ -48,15 +51,14 @@ public class DeptServiceImplV1 implements DeptService
 	public String getDCode() {
 		
 		String retDCode = "D001";
-		try 
-		{
-			String maxCode = deptDAO.maxDCode();
+		try {
+			String maxCode = deptDao.maxDCode();
 			String preCode = maxCode.substring(0,1);
-			int  dcode = Integer.valueOf(maxCode.substring(1)) + 1;
-			retDCode = String.format("%s%03d", preCode,dcode);
-			
+			int dcode = Integer.valueOf(maxCode.substring(1)) + 1;
+			retDCode = String.format("%s%03d",preCode,dcode);
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-		catch (Exception e) {}
 		return retDCode;
 	}
 

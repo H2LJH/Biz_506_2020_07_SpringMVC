@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 import com.biz.hello.model.StudentVO;
 
 @Service
-public class StudentServiceImpl implements StudentService 
-{
+public class StudentServiceImpl implements StudentService{
 
 	@Override
-	public List<StudentVO> selectAll() 
-	{
+	public List<StudentVO> selectAll() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public StudentVO findByStnum(String st_num) 
-	{
+	public StudentVO findByStNum(String st_num) {
+
 		StudentVO stVO = new StudentVO();
+		
 		stVO.setSt_num(st_num);
 		stVO.setSt_name("홍길동");
 		stVO.setSt_tel("010-111-1111");
@@ -30,20 +30,20 @@ public class StudentServiceImpl implements StudentService
 	}
 
 	@Override
-	public int insert(StudentVO vo) 
-	{
+	public int insert(StudentVO studentVO) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(StudentVO vo) 
-	{
+	public int update(StudentVO studentVO) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delete(String st_num) 
-	{
+	public int delete(String st_num) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 

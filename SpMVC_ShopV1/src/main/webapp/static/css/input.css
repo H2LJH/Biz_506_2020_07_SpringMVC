@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 form fieldset {
 	width: 80%;
 	margin: 10px auto;
@@ -17,7 +18,7 @@ label {
 	text-align: right;
 	margin: 4px;
 	padding: 8px;
-	color: orange;
+	color: rgb(100, 78, 228);
 	font-weight: bold;
 }
 
@@ -31,8 +32,8 @@ input {
 }
 
 #btn_box {
-	width: 80%;
 	text-align: right;
+	width: 80%;
 }
 
 #btn_box button {

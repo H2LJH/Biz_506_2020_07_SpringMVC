@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
 <meta charset="UTF-8">
-	<title>Home</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<%@ include file = "/WEB-INF/views/Include/include-nav.jsp" %>
-<h3>나는 home3</h3>
+	<%@ include file="/WEB-INF/views/include/include-nav.jsp" %>
+	<h4>여기는 ${your} 네 집입니다</h4>
 </body>
 </html>
