@@ -1,0 +1,96 @@
+<th:block th:include="header" />
+
+<style>
+	#input_form{
+		width:80%;
+		margin: 10px auto;
+		
+	}
+	
+	#input_form div{
+		display : flex;
+	}
+	
+	#input_form lave{
+		flex : 1;
+		text-align: right;
+		margin: 5px;
+		padding: 8px;
+	}
+	
+	#input_form input{
+		flex : 3;
+		margin: 5px;
+		padding: 8px;
+	}
+
+</style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+
+        document.querySelector("#btn_save").addEventListener("click", function(e){});
+        /*
+            form으로 감싸진 button, input type="submit"이 클릭되면
+            form에서 서버로 데이터가 전동되기 위하여 submit 이벤트가 발생한다.
+            submit 이벤트를 가로채서 마치 button이 클릭되었을때 수행할 코드를 여기에 추가할수 있다.
+        */
+        document.addEventListener("submit", function(e){
+            e.stopPropagation();
+            e.preventDefault(); // 고유의 이벤트 (현재 submit) 멈추기
+
+            const title = document.querySelector("#title");
+            const author = document.querySelector("#author");
+            const comp = document.querySelector("#comp");
+            const price = document.querySelector("#price");
+
+            if(title.value === ""){
+                alert("도서명은 반드시 입력해야 합니다.");
+                title.focus();
+                return false;
+            }
+
+            if(author.value === ""){
+                alert("저자명은 반드시 입력해야 합니다.");
+                author.focus();
+                return false;
+            }
+            
+            
+            if(!price.value){
+            	alert("가격은 반드시 0 보다 큰값을 입력해야 합니다.");
+            	price.focus();
+            	return false;
+            }
+
+            document.querySelector("form").submit(); // 유효성 검사가 모두 완료되면 서버로 데이터를 전송
+            return false; // 안될때가 있다.
+        });
+    });
+</script>
+
+<form method="POST" id="input_form" th:object=${BOOK_VO}>
+	<div>
+		<label>도서명</label>
+		<input name="title" id="title" th:value="*{title}">
+	</div>
+	
+	<div>
+		<label>저자</label>
+		<input name="author" id="author" th:value="*{author}">
+	</div>
+	
+	<div>
+		<label>출판사</label>
+		<input name="comp" id="comp" th:value="*{comp}">
+	</div>
+	
+	<div>
+		<label>가격</label>
+		<input name="price" id="price" th:value="*{price}">
+	</div>
+	
+	<div>
+		<input type="submit" id="btn_save" value="저장">
+	</div>
+</form>

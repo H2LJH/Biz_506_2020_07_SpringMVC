@@ -1,4 +1,4 @@
-package com.biz.book.constroller;
+package com.biz.book.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

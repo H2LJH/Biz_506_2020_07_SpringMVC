@@ -1,0 +1,35 @@
+<th:block th:include="header" />
+
+<script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+
+       document.querySelector("div.button_box").addEventListener("click", function(e){
+            let className = e.target.className;
+            let id = e.target.dataset.id;
+            if(className === "btn_delete" && confirm("정말 삭제할까요 ?"))
+            	/*<![CDATA[*/
+                    let url = /*[["@{/book/delete/}"]]*/
+                    document.location.replace(`${url}${id}`);
+                /*]]*/
+            
+            if(className === "btn_update"){
+            	/*<![CDATA[*/
+            	let url = /*[["@{/book/update/}"]]*/
+            	document.location.href = `${url}?id=${id}`;
+            	/*]]*/            		
+            }
+       })
+    });
+</script>
+
+<ul th:object="${BOOK_VO}">
+    <li th:text="*{id}"/>
+    <li th:text="*{title}" />
+    <li th:text="*{author}"/>
+    <li th:text="*{comp}"/>
+    <li th:text="*{price}"/>
+</ul>
+<div class="button_box">
+    <button class="btn_update" th:data-id="${BOOK_VO.id}">수정</button>
+    <button class="btn_delete" th:data-id="${BOOK_VO.id}">삭제</button>
+</div>
