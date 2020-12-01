@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.biz.bbs.mapper.EmployeesDAO">
+
+<select id="selectAll" resultType="EmployeesVO">
+
+	SELECT * FROM tbl_employees
+
+</select>
+
+<select id="findById" resultType="EmployeesVO">
+
+	SELECT * FROM tbl_employees WHERE e_id = #{pk}
+	
+</select>
+
+<insert id="insert" parameterType="EmployeesVO">
+
+	INSERT INTO tbl_employees (e_id, e_first_name, e_last_name, e_address, e_tel, e_email) 
+				       VALUES (seq_empl.nextval, #{e_first_name}, #{e_last_name}, #{e_address}, #{e_tel}, #{e_email})
+
+</insert>
+
+<update id="update" parameterType="EmployeesVO">
+
+	UPDATE tbl_employees SET	
+		e_id 		 = #{e_id} 
+    	e_first_name = #{e_first_name}
+    	e_last_name  = #{e_last_name}
+    	e_address 	 = #{e_address}
+    	e_tel  		 = #{e_tel}
+    	e_email 	 = #{e_email}
+	WHERE e_id = #{e_id}
+
+</update>
+
+
+<delete id="delete">
+	delete from tbl_employees where e_id = #{pk} 
+</delete>
+
+</mapper>
